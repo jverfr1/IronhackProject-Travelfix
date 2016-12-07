@@ -1,36 +1,61 @@
 var apiKey = "AIzaSyBTonLZT2cEOII-Tqc1GpTgUA-zDT_a1mg";
-
+var urlPlace = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?";
+var urlDetails = "https://maps.googleapis.com/maps/api/place/details/json?";
+var reference;
 $(document).on('ready', function() {
     $('.js-embassy-search').on('click',handleRequest);
 });
-function ajaxRequest(callbackSuccess, method) {
+
+function ajaxRequest(uri, callbackSuccess,parameters, method) {
 	method = method || "GET";
-	var url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+coords+"&radius=5000&types=embassy&name="+$(".js-embassy-name").val()+"&key="+apiKey;
-	console.log(url);
+	console.log(parameters);
 	$.ajax({
 		type: method,
-        url: url,
+        url: uri,
+        data:  parameters,
+        dataType: 'json',
+        // crossOrigin: true,
+        // context: {},
         contentType: "application/json; charset=utf-8",
         crossDomain: true,
-        headers: { "Access-Control-Allow-Origin":  '*'
+        headers: { "Access-Control-Allow-Origin":  '*', 'Access-Control-Allow-Methods': 'GET',
         },
+
 		success: callbackSuccess,
 		error: handleError
 	});	
 }
-function detailsRequest(result) {
-	// var prueba = "adsflkjasd";
-	// debugger;
-	console.log(result);
+function getEmbassyReference(response) {
+
+	reference = response.results[0].reference;	
+	var params = {
+		reference: reference,
+		key: apiKey
+	}
+	ajaxRequest(urlDetails,printEmbassyDetails,params);
 	// var url = "https://maps.googleapis.com/maps/api/place/details/json?reference=";
 }
 function handleRequest(event) {
 	event.preventDefault();
-	ajaxRequest(detailsRequest);
+ 
+	var coord = navigator.geolocation.getCurrentPosition(onLocation, error, options);
+	var placeParams = {
+		name: $('.js-embassy-name').val(),
+		location: coords,
+		type: "embassy",
+		radius: "5000",
+		key: apiKey
+	}
+	ajaxRequest(urlPlace, getEmbassyReference, placeParams);
 }
 
 function handleError(error) {
-	console.log(error);
+		console.log(url)
+	console.log("error");
+
+}
+function printEmbassyDetails(embassy) {
+	console.log(embassy);
 }
 
 // https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.4167754,-3.7037902&radius=5000&types=embassy&name=thailand&key=
