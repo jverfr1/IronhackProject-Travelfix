@@ -20,4 +20,29 @@ class Embassy < ApplicationRecord
     countries.slice!(-1)
     countries
   end
+  def self.country_embassies!(country)
+    mechanize = Mechanize.new
+    page = mechanize.get("http://www.embassy-worldwide.com/")
+    if country.include? "Antigua"
+      country = "Antigua & Barbuda"
+    elsif country.include? "Grenadines"
+      country = "St. Vincent & Grenadines"
+    end
+    country = page.link_with(text:country)
+    if country != nil
+      sspain = country.click
+      left = sspain.search('.left-country-toggler')
+      country_embassies = []
+
+      left.each do |el|
+    
+        if el.next.text.include? "Embassy"
+    
+          a = el.text
+          country_embassies.push(a)
+        end      
+      end
+    end
+    country_embassies
+  end
 end

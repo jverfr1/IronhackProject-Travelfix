@@ -6,6 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Embassy.get_countries_list.each do |country|
+#   Embassy.create(name: country)
+# end
 Embassy.get_countries_list.each do |country|
-  Embassy.create(name: country)
+  if country.include? "Antigua"
+    country = "Antigua & Barbuda"
+  elsif country.include? "Grenadines"
+    country = "St. Vincent & Grenadines"
+  end  
+  Embassy.country_embassies!(country).each do |country_embassy|
+    Embassy.create(
+      name: country,
+      abroad: country_embassy)
+  end
 end
+
+#     for i in 1..Embassy.spain_embassies!.length
+
+#       Embassy.create(
+#         abroad: Embassy.spain_embassies![i])
+#     end
