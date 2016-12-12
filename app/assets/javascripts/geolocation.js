@@ -1,14 +1,14 @@
-navigator.geolocation.getCurrentPosition(onLocation, error, options);
+// navigator.geolocation.getCurrentPosition(onLocation, error, options);
 
 
-function onLocation(position) {
-	coords =position.coords.latitude+","+position.coords.longitude;
-}
+// function onLocation(position) {
+// 	coords =position.coords.latitude+","+position.coords.longitude;
+// }
 
-function error(error) {
-	console.log("error");
-	return true;
-}
-var options = {
-	enableHighAccuracy:true,
-};
+// function error(error) {
+// 	console.log("error");
+// 	return true;
+// }
+// var options = {
+// 	enableHighAccuracy:true,
+// };
