@@ -14,9 +14,7 @@ class Embassy < ApplicationRecord
 
     countries = []
     array.map! do |country|
-      if country.length < 30 && country != "Homepage"
-        countries.push(country)
-      end
+        countries.push(country) if (country.length < 30 && country != "Homepage")
     end
     countries.slice!(-1)
     countries
@@ -65,9 +63,14 @@ class Embassy < ApplicationRecord
     results =form.submit.search('.hotellist')  
     hotels = results.css('div.sr_item')
     hotels_results = []
+    hotel_links = []
     hotels.each do |hotel|
-      hotels_results.push(hotel.css('h3').children[1].children[1].text )
+      # hotels_results.push(hotel.css('h3').children[1].children[1].text)
+      # hotel_links.push(hotel.css('.hotel_name_link')[0].to_html.html_safe )
+      hotels_results.push({name: hotel.css('.hotel_name_link')[0].text, img: hotel.at('img').to_html.html_safe})
     end
     hotels_results
+
   end
 end
+      # hotel_links.push(hotel.css('.hotel_name_link')[0].to_html )
