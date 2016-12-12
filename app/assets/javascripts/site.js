@@ -18,8 +18,7 @@
 //     }
 //     x[slideIndex-1].style.display = "block"; 
 // }
+
 $(document).ready(function(){
-    $(document).ready(function(){
-      $('.slider').slider({height: 800, indicators: false});
-    });
+    $('.slider').slider({height: 800, indicators: false});
 });

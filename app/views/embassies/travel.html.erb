@@ -1,5 +1,5 @@
 <div class="row">
-	<%=form_tag(:search_results, class: "col m6") do %>
+	<%=form_tag(:search_results, method: 'GET', class: "col m6") do %>
 
 	<div class="row">
 		<div class="input-field col m3">
@@ -9,15 +9,19 @@
 	</div>
 	<div class="row">
 		<div class="input-field col m3">
-			<%= text_field_tag(:from, "", class: "datepicker picker_input") %>
-			<%= label_tag(:from) %>
+			<%= text_field_tag(:from, "", class: "datepicker") %>
+
 		</div>
 	</div>
 	<div class="row">
-		<div class="input-field col m3">
-			<%= text_field_tag(:to, "", class: "datepicker picker_input") %>
+		<div class="col m3" id="date-picker">
+			<%= text_field_tag(:to, "", class: "datepicker picker__input") %>
 			<%= label_tag(:to) %>
 		</div>
 	</div>
+	<%= submit_tag(:search, class: 'btn waves-effect waves-light') %>
 	<% end %>
 </div>
+
+
+<%= @hotels %>

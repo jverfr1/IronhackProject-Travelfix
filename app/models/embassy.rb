@@ -46,4 +46,28 @@ class Embassy < ApplicationRecord
     end
     country_embassies
   end
+  def self.hotel_search(destination, from, to)
+    from = from.split(" ")
+
+    agent = Mechanize.new
+
+    page = agent.get('http://www.booking.com/index.es.html?label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaEaIAQGYAQq4AQrIAQzYAQPoAQGoAgM;sid=b2cfc654f1a4615ffc199663a7de37d9;sb_price_type=total&')
+    form = page.form
+
+    form.fields[6].value=destination
+    form.fields[7].value=from[0]
+    form.fields[8].value=from[1].slice(0..-2)
+    form.fields[9].value=from[2]
+    form.fields[10].value=to[0]
+    form.fields[11].value=to[1].slice(0..-2)
+    form.fields[12].value=to[2]
+
+    results =form.submit.search('.hotellist')  
+    hotels = results.css('div.sr_item')
+    hotels_results = []
+    hotels.each do |hotel|
+      hotels_results.push(hotel.css('h3').text)
+    end
+    hotels_results
+  end
 end
