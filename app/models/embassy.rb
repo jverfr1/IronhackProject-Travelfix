@@ -66,7 +66,7 @@ class Embassy < ApplicationRecord
     hotels = results.css('div.sr_item')
     hotels_results = []
     hotels.each do |hotel|
-      hotels_results.push(hotel.css('h3').text)
+      hotels_results.push(hotel.css('h3').children[1].children[1].text )
     end
     hotels_results
   end
