@@ -1,4 +1,5 @@
 class Embassy < ApplicationRecord
+  private
   def self.get_countries_list
     mechanize = Mechanize.new
 

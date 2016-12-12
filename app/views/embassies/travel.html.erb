@@ -1,0 +1,23 @@
+<div class="row">
+	<%=form_tag(:search_results, class: "col m6") do %>
+
+	<div class="row">
+		<div class="input-field col m3">
+			<%= text_field_tag(:destination, "",class: "validate") %>
+			<%= label_tag(:destination) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-field col m3">
+			<%= text_field_tag(:from, "", class: "datepicker picker_input") %>
+			<%= label_tag(:from) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="input-field col m3">
+			<%= text_field_tag(:to, "", class: "datepicker picker_input") %>
+			<%= label_tag(:to) %>
+		</div>
+	</div>
+	<% end %>
+</div>

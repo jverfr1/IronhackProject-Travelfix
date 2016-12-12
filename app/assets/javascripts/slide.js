@@ -1,6 +1,3 @@
-// Place all the behaviors and hooks related to the matching controller here.
-//All this logic will automatically be available in application.js.
-// You can use CoffeeScript in this file: http://coffeescript.org/
 // var slideIndex = 1;
 // showDivs(slideIndex);
 
@@ -18,8 +15,3 @@
 //     }
 //     x[slideIndex-1].style.display = "block"; 
 // }
-$(document).ready(function(){
-    $(document).ready(function(){
-      $('.slider').slider({height: 800, indicators: false});
-    });
-});

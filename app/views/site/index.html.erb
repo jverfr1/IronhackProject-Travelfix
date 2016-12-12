@@ -1,7 +1,55 @@
 
-<input type="text" class="js-embassy-name" placeholder="Embassy name">
-<button class="js-embassy-search" type="submit">Search</button>
-
+<!-- <input type="text" class="js-embassy-name" placeholder="Embassy name"> 
+<button class="js-embassy-search" type="submit">Search</button>-->
+<!--
 <div id="search-results">
 	<ul></ul>
+</div>-->
+<!--
+<form id="js.flight-data" action="http://partners.api.skyscanner.net/apiservices/pricing/v1.0" >
+	<input type="hidden" name="country" class="js-country" placeholder="country" value="es">
+	<input type="hidden" name="currency" class="js-currency" placeholder="currency" value="EUR">
+	<input type="hidden" name="locale" class="js-locale" placeholder="locale" value="es-es">
+	<input type="text" name="originplace" class="js-originplace" placeholder="from">
+	<input type="text" name="destinationplace" class="js-destinationplace" placeholder="to">
+	<input type="date" name="outbounddate" class="js-outounddate" placeholder="outboundate">
+	<input type="date" name="inbounddate" class="inbounddate" placeholder="inbounddate">
+	<input type="text" name="adults" class="js-adult" placeholder="adults">
+	<input type="hidden" name="apiKey" class="js-apikey" value="jo287334731819450488945779175902">
+	<button class="js-search-flight">Search Flight</button>
+ </form> -->
+<!-- 
+   <div class="carousel carousel-slider">
+    <a class="carousel-item" href="#one!"><img src="http://localhost:3000/assets/lan.jpg" ></a>
+    <a class="carousel-item" href="#two!"><img src="http://lorempixel.com/800/400/food/2"></a>
+    <a class="carousel-item" href="#three!"><img src="http://lorempixel.com/800/400/food/3"></a>
+    <a class="carousel-item" href="#four!"><img src="http://lorempixel.com/800/400/food/4"></a>
+  </div>
+
+  <a class="waves-effect waves-light btn-large">Button</a> -->
+
+  <div class="slider ">
+  	<ul class="slides">
+  		<li>
+  			<img src="/assets/lan.jpg" alt="">
+  		</li>
+  		<li>
+  			<img src="/assets/landing1.jpg" alt="">
+  		</li>
+  		<li>
+  			<img src="/assets/mapa.jpg" alt="">  		
+  		</li>
+  	</ul>
+  </div>
+
+<!--   <a class="waves-effect waves-light btn-large">Button</a> -->
+<div class="container">
+	<div class="row">
+		<div class="col m4 offset-m2 center">
+			<%= link_to 'TRAVEL', travel_path, class: "waves-effect waves-light btn-large"  %>
+		</div>
+		<div class="col m4 center">
+			<%= link_to 'RELOCATE', relocate_path, class: "waves-effect waves-light btn-large" %>
+		</div>
+	</div>
 </div>
