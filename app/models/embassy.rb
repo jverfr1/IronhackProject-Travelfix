@@ -44,48 +44,52 @@ class Embassy < ApplicationRecord
     end
     country_embassies
   end
+  # def self.hotel_search(destination, from_date, to_date)
   def self.hotel_search(destination, from, to)
-    from = from.split(" ")
 
-    agent = Mechanize.new
-
-    page = agent.get('http://www.booking.com/index.es.html?label=gen173nr-1DCAEoggJCAlhYSDNiBW5vcmVmaEaIAQGYAQq4AQrIAQzYAQPoAQGoAgM;sid=b2cfc654f1a4615ffc199663a7de37d9;sb_price_type=total&')
-    form = page.form
-
-    form.fields[6].value=destination
-    form.fields[7].value=from[0]
-    form.fields[8].value=from[1].slice(0..-2)
-    form.fields[9].value=from[2]
-    form.fields[10].value=to[0]
-    form.fields[11].value=to[1].slice(0..-2)
-    form.fields[12].value=to[2]
-
-    results =form.submit.search('.hotellist')  
-    hotels = results.css('div.sr_item')
     hotels_results = []
-    hotel_links = []
+    hotels =fill_form(destination, from, to).search('.h-listing')[0].search('.hotel-wrap').search('.description') 
     hotels.each do |hotel|
-      # hotels_results.push(hotel.css('h3').children[1].children[1].text)
-      # hotel_links.push(hotel.css('.hotel_name_link')[0].to_html.html_safe )
       hotels_results.push({
-        name: hotel.css('.hotel_name_link')[0].text, 
-        img: hotel.at('img').to_html.html_safe, 
-        punctuation: punctuation(hotel),
-        link: "http://booking.com"+hotel.css('a.sr_item_photo_link')[0].attributes['href'].value,
-        stars: hotel.css('.invisible_spoken')[0].children.text.slice(/\d/),
-        address: address(hotel)
+        name: get_name(hotel),
+        last_reservation: last_reservation(hotel),
+        link: get_link(hotel),
+        address: get_address(hotel),
+        image: get_image(hotel),
         })
     end
     hotels_results
 
   end
-  def self.punctuation(hotel)
-    hotel.css('span.average')[0].children.text.chomp if hotel.css('span.average').size !=0
+  def self.get_name(hotel)
+    hotel.search('h3').text.chomp
   end
-  def self.address(hotel)
-    hotel.css('.address').text if hotel.css('.address')
+  def self.last_reservation(hotel)
+    hotel.search('.messaging').text.chomp
+  end
+  def self.get_link(hotel)
+    "https://es.hoteles.com/"+hotel.search('h3').search('a')[0].attributes["href"].value
+  end
+  def self.get_address(hotel)
+    hotel.search('.contact').text.chomp
+  end
+  def self.get_image(hotel)
+    hotel.search('.image-and-details')[0].search('.image')[0].children[0].search('img')[0].attributes['style'].value.split("'")[1].to_s  
+  end
+  def self.format_date(date)
+    Date.parse(date).strftime('%d/%m/%Y')
+  end
+  def self.check_date(date)
+    date >= Date.today.strftime('%d %B,%Y')
+  end
+  def self.mechanize
+    page = Mechanize.new.get("https://es.hoteles.com")
+  end
+  def self.fill_form(destination,from, to)
+    form = mechanize.forms[0]
+    form.fields[0].value=destination
+    form.fields[1].value=format_date(from)
+    form.fields[3].value=format_date(to)
+    form.submit
   end
 end
-      # hotel_links.push(hotel.css('.hotel_name_link')[0].to_html )
-
-      # hotel.css('.sr_item_photo_link')[0].children[3].attributes["data-title"].value

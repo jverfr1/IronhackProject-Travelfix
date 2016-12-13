@@ -3,18 +3,18 @@
 		<div class="row center"></div>
 		<% @hotels.each do |hotel| %>
 		<div class="col s12 m7">
-		    <h2 class="header"><%= hotel[:name] %> <%= stars(hotel[:stars]) %> </h2>
+		    <h2 class="header"><%= hotel[:name] %>, <%= hotel[:last_reservation] %>  </h2>
 		    <div class="card horizontal">
 		      <div class="card-image">
-		        <%= hotel[:img] %>
+		        <img src=<%= hotel[:image] %>>
 		      </div>
 		      <div class="card-stacked">
 		        <div class="card-content">
-		          <h4> Punctuation: <%= hotel[:punctuation] %></h4>
+		          
 		          <p><%= hotel[:address] %></p>
 		        </div>
 		        <div class="card-action">
-		          <a href=<%=hotel[:link] %>><%= hotel[:name] %></a>
+		         <a href=<%= hotel[:link] %>> <%= hotel[:name] %></a>
 		        </div>
 		      </div>
 		    </div>

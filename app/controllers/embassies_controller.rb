@@ -7,10 +7,12 @@ class EmbassiesController < ApplicationController
   end
   def search
     @destination = params[:destination]
-    @date2 = params[:from]
-    @date1 = params[:to]
-    @hotels = Embassy.hotel_search(@destination, @date1, @date1)
-
+    @date1 = params[:from]
+    @date2 = params[:to]
+    # unless Embassy.check_date(@date1)
+    #   redirect_to '/travel'
+    # end
+    @hotels = Embassy.hotel_search(@destination,@date1,@date2)
   end
   def relocate
   end

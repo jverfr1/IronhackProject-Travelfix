@@ -12,4 +12,5 @@ module EmbassiesHelper
     end
     @star.join().html_safe
   end
+
 end
