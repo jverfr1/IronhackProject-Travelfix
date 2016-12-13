@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'rails_12factor'
 gem 'rack-cors'
 gem 'font-awesome-rails'
+gem 'cloudinary'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do
