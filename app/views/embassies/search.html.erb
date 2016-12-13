@@ -9,10 +9,10 @@
 		      </div>
 		      <div class="card-stacked">
 		        <div class="card-content">
-		          <p>I am a very simple card. I am good at containing small bits of information.</p>
+		          <p><%= hotel[:description] %> <%= fa-icon 'fa-star-o' %> </p>
 		        </div>
 		        <div class="card-action">
-		          <a href="#"><%= hotel[:name] %></a>
+		          <a href=<%=hotel[:link] %>><%= hotel[:name] %></a>
 		        </div>
 		      </div>
 		    </div>

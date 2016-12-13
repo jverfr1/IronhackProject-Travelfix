@@ -18,5 +18,7 @@ $primary-color: color("green", "darken-4") !default;
 $secondary-color: color("grey", "darken-3") !default;
 @import "materialize";
 @import "materialize/extras/nouislider";
+@import "font-awesome";
 @import "site";
 @import "embassies"
+

@@ -67,7 +67,13 @@ class Embassy < ApplicationRecord
     hotels.each do |hotel|
       # hotels_results.push(hotel.css('h3').children[1].children[1].text)
       # hotel_links.push(hotel.css('.hotel_name_link')[0].to_html.html_safe )
-      hotels_results.push({name: hotel.css('.hotel_name_link')[0].text, img: hotel.at('img').to_html.html_safe})
+      hotels_results.push({
+        name: hotel.css('.hotel_name_link')[0].text, 
+        img: hotel.at('img').to_html.html_safe, 
+        description: hotel.css('.sr_item_photo_link')[0].children[3].attributes["data-title"].value.chomp.html_safe,
+        link: "http://booking.com"+hotel.css('a.sr_item_photo_link')[0].attributes['href'].value
+        stars: hotel.css('.invisible_spoken')[0].children.text.slice(/\d/)
+        })
     end
     hotels_results
 
