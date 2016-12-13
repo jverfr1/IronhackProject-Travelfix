@@ -70,13 +70,22 @@ class Embassy < ApplicationRecord
       hotels_results.push({
         name: hotel.css('.hotel_name_link')[0].text, 
         img: hotel.at('img').to_html.html_safe, 
-        description: hotel.css('.sr_item_photo_link')[0].children[3].attributes["data-title"].value.chomp.html_safe,
-        link: "http://booking.com"+hotel.css('a.sr_item_photo_link')[0].attributes['href'].value
-        stars: hotel.css('.invisible_spoken')[0].children.text.slice(/\d/)
+        punctuation: punctuation(hotel),
+        link: "http://booking.com"+hotel.css('a.sr_item_photo_link')[0].attributes['href'].value,
+        stars: hotel.css('.invisible_spoken')[0].children.text.slice(/\d/),
+        address: address(hotel)
         })
     end
     hotels_results
 
   end
+  def self.punctuation(hotel)
+    hotel.css('span.average')[0].children.text.chomp if hotel.css('span.average').size !=0
+  end
+  def self.address(hotel)
+    hotel.css('.address').text if hotel.css('.address')
+  end
 end
       # hotel_links.push(hotel.css('.hotel_name_link')[0].to_html )
+
+      # hotel.css('.sr_item_photo_link')[0].children[3].attributes["data-title"].value
