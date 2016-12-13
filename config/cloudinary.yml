@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dhoyogrxm
+  api_key: '759317219995767'
+  api_secret: rJDBfYHYtBGl8Fnyg1pSlzb0QNo
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dhoyogrxm
+  api_key: '759317219995767'
+  api_secret: rJDBfYHYtBGl8Fnyg1pSlzb0QNo
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dhoyogrxm
+  api_key: '759317219995767'
+  api_secret: rJDBfYHYtBGl8Fnyg1pSlzb0QNo
+  enhance_image_tag: true
+  static_image_support: false

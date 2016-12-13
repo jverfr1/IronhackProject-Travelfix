@@ -1,6 +1,6 @@
 class EmbassiesController < ApplicationController
   def travel
-    
+
     respond_to do |format|
       format.html
     end
