@@ -19,6 +19,6 @@
 //     x[slideIndex-1].style.display = "block"; 
 // }
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
     $('.slider').slider({height: 770, indicators: false, full_width: true});
 });
