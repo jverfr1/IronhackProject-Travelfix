@@ -12,8 +12,7 @@ class EmbassiesController < ApplicationController
     # unless Embassy.check_date(@date1)
     #   redirect_to '/travel'
     # end
-    @hotels = Hotel.hotel_search(@destination,@date1,@date2)
-    # .paginate(page: params[:page], per_page: 4)
+    @hotels = Hotel.hotel_search(@destination,@date1,@date2).paginate(page: params[:page], per_page: 4)
   end
   def relocate
   end

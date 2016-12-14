@@ -64,12 +64,12 @@ class Embassy < ApplicationRecord
 end
 
 
-embassies_abroad = []
-spain.each do |embassy|
-  if embassy.next.search('a').text.include? "Embassy"
-    embassies_abroad << {   
-      title: embassy.next.search('a').text,
-      link: embassy.next.search('a')[0].to_html
-    }
-  end
-end
+# embassies_abroad = []
+# spain.each do |embassy|
+#   if embassy.next.search('a').text.include? "Embassy"
+#     embassies_abroad << {   
+#       title: embassy.next.search('a').text,
+#       link: embassy.next.search('a')[0].to_html
+#     }
+#   end
+# end
