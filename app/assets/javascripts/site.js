@@ -20,5 +20,5 @@
 // }
 
 $(document).ready(function(){
-    $('.slider').slider({height: 600, indicators: false, full_width: true});
+    $('.slider').slider({height: 770, indicators: false, full_width: true});
 });
