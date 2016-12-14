@@ -56,9 +56,9 @@ class Embassy < ApplicationRecord
         image:            get_image(hotel),
         stars:            get_stars(hotel),
         price:            get_price(hotel),
-        price:            get_price_description(hotel)
+        price:            get_price_description(hotel),
         name:             get_name(hotel),
-        link:             get_link(hotel),
+        link:             get_link(hotel)
         }
     end
     hotels_results
