@@ -12,7 +12,7 @@ class EmbassiesController < ApplicationController
     # unless Embassy.check_date(@date1)
     #   redirect_to '/travel'
     # end
-    @hotels = Embassy.hotel_search(@destination,@date1,@date2)
+    @hotels = Hotel.hotel_search(@destination,@date1,@date2)
   end
   def relocate
   end
