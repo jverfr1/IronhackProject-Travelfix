@@ -3,10 +3,10 @@
 		<div class="row center"></div>
 		<% @hotels.each do |hotel| %>
 		<div class="col s12 m7">
-		    <h2 class="header"><%= hotel[:name] %>, <%= hotel[:last_reservation] %>  </h2>
-		    <div class="card horizontal">
+		    <h4 class="header"><%= hotel[:name] %> <%= stars(hotel[:stars]) %>  </h4>
+		    <div class="card horizontal hoverable">
 		      <div class="card-image">
-		        <img src=<%= hotel[:image] %>>
+		        <img src=<%= hotel[:image] %> class="materialboxed">
 		      </div>
 		      <div class="card-stacked">
 		        <div class="card-content">

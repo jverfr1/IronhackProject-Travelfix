@@ -50,13 +50,14 @@ class Embassy < ApplicationRecord
     hotels_results = []
     hotels =fill_form(destination, from, to).search('.h-listing')[0].search('.hotel-wrap').search('.description') 
     hotels.each do |hotel|
-      hotels_results.push({
+      hotels_results << {
         name: get_name(hotel),
         last_reservation: last_reservation(hotel),
         link: get_link(hotel),
         address: get_address(hotel),
         image: get_image(hotel),
-        })
+        stars: get_stars(hotel)
+        }
     end
     hotels_results
 
@@ -78,6 +79,9 @@ class Embassy < ApplicationRecord
   end
   def self.format_date(date)
     Date.parse(date).strftime('%d/%m/%Y')
+  end
+  def self.get_stars(hotel)
+    hotel.search('.star-rating-container')[0].search('.widget-tooltip-bd').text.slice!(0)
   end
   def self.check_date(date)
     date >= Date.today.strftime('%d %B,%Y')
