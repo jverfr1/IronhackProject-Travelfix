@@ -14,9 +14,8 @@ class EmbassiesController < ApplicationController
     # end
     @hotels = Hotel.hotel_search(@destination,@date1,@date2).paginate(page: params[:page], per_page: 4)
   end
-  def index
-    @countries = Embassy.all.pluck(:name).uniq.paginate(page: params[:page], per_page: 50)
-    @embassies = Embassy.all 
+  def show
+    @embassy=Embassy.where('name=? and location_abroad=?', params[:to], params[:from])
   end
 end
 

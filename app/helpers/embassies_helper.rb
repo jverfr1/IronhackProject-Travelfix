@@ -1,5 +1,4 @@
 module EmbassiesHelper
-
   # def stars(number)
   #   @star=[]
   #   number.to_i.times do

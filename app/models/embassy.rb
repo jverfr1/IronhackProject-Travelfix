@@ -63,4 +63,7 @@ def self.get_countries_list
     end
     country_embassies
   end
+  def visa_info(url)
+    page = Mechanize.new.get(url)
+  end
 end

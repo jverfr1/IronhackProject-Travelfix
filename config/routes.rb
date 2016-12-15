@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   get '/', to: 'site#index'
   get '/travel', to: 'embassies#travel'
   get '/travel/results', to: 'embassies#search', as: :search_results
-  get '/embassies', to: 'embassies#index'
+  get '/travel/embassy', to: 'embassies#show', as: :embassy_search
 end
