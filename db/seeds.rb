@@ -18,12 +18,13 @@ Embassy.get_countries_list.each do |country|
   Embassy.country_embassies!(country).each do |country_embassy|
     Embassy.create(
       name: country,
-      abroad: country_embassy)
+      location_abroad: country_embassy[:location_abroad],
+      title: country_embassy[:title],
+      link: country_embassy[:link])
   end
 end
 
-#     for i in 1..Embassy.spain_embassies!.length
-
-#       Embassy.create(
-#         abroad: Embassy.spain_embassies![i])
-#     end
+# Embassy.get_countries_list.each do |name|
+#   Embassy.create(
+#     name: name)
+# end

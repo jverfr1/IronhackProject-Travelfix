@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :hotel do
+  factory :embassy do
     
   end
 end
