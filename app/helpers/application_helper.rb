@@ -9,5 +9,4 @@ module ApplicationHelper
     end
     @star.join().html_safe
   end
-
 end

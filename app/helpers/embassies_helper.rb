@@ -1,13 +1,13 @@
 module EmbassiesHelper
-  # def stars(number)
-  #   @star=[]
-  #   number.to_i.times do
-  #     @star << "<i class='fa fa-star' aria-hidden='true'></i>"
-  #   end
-  #   (5-number.to_i).times do
-  #     @star << "<i class='fa fa-star-o' aria-hidden='true' class='yellow accent-2'></i>"
-  #   end
-  #   @star.join().html_safe
-  # end
+  def check_contact_data(item)
+    html = "<li class='collection-item'><b>#{format_key(item)}:</b> #{format_value(item)}</li>"
+    html.html_safe if format_key(item) != "Email"
+  end
+  def format_key(item)
+    item.keys.join("")
+  end
+  def format_value(item)
+    item.values.join("")
+  end
 
 end

@@ -1,9 +1,6 @@
 class EmbassiesController < ApplicationController
   def travel
 
-    respond_to do |format|
-      format.html
-    end
   end
   def search
     @destination = params[:destination]
@@ -16,6 +13,7 @@ class EmbassiesController < ApplicationController
   end
   def show
     @embassy=Embassy.where('name=? and location_abroad=?', params[:to], params[:from])
+    @embassy_info = Embassy.get_contact_info(@embassy[0].link)
   end
 end
 
