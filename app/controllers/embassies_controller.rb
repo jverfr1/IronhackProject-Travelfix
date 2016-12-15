@@ -14,7 +14,9 @@ class EmbassiesController < ApplicationController
     # end
     @hotels = Hotel.hotel_search(@destination,@date1,@date2).paginate(page: params[:page], per_page: 4)
   end
-  def relocate
+  def index
+    @countries = Embassy.all.pluck(:name).uniq.paginate(page: params[:page], per_page: 50)
+    @embassies = Embassy.all 
   end
 end
 

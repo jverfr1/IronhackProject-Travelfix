@@ -1,0 +1,6 @@
+<ul>
+<% @countries.each do |name| %>
+	<li><%= name %></li>
+	<% end %>
+</ul>	
+<%= will_paginate @countries %>

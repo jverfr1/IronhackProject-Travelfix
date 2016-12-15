@@ -1,40 +1,7 @@
-<%= alert %>
+
 <%= render 'slider' %>
-<div class="container">
-
-	<%=form_tag(:search_results, method: 'GET', class: "col m6 offset-m3 card-panel transparent") do %>
-<div class="row">
-	<div class="col m4">
-		<div class="input-field col m8 ">
-			<%= text_field_tag(:destination, "",class: "validate") %>
-			<%= label_tag(:destination) %>
-		</div>
-    </div>
-    <div class="col m4">
-		<div class="input-field col m8 ">
-			<%= label_tag(:from) %>
-			<%= text_field_tag(:from, "", class: "datepicker") %>
-
-		</div>
+<div class="valign-wrapper" id="valign-wrapper">
+	<div class="valign">
+<%= render 'form_hotel' %>
 	</div>
-		<div class="col m4">
-		<div class="input-field col m8 ">
-			<%= label_tag(:to) %>
-			<%= text_field_tag(:to, "", class: "datepicker") %>
-		</div>
 </div>
-</div>
-	<div class="row">
-	<div class="col m4 offset m5"></div>
-        
-	<%= submit_tag(:search, class: 'btn waves-effect waves-light js-loader') %>
-	<% end %>
-	</div>
-   </div>	
-		 <div class="progress ">
-      		<div class="indeterminate css-loader"></div>
-  	  </div>
-</div>
-
-
-<%= @hotels %>
