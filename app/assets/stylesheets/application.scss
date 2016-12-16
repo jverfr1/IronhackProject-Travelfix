@@ -21,3 +21,4 @@ $secondary-color: color("grey", "darken-3") !default;
 @import "font-awesome";
 
 
+.pagination a li.active { color: #fff; }

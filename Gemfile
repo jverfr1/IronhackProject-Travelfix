@@ -32,6 +32,7 @@ gem 'font-awesome-rails'
 gem 'cloudinary'
 gem 'will_paginate', '~> 3.1.0'
 gem 'pdf-reader'
+gem 'will_paginate-materialize'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do
