@@ -1,22 +1,16 @@
 
-    <div class="col s4 offset-s4">
+<div class="col s4 offset-s4">
 	<%=form_tag(:embassy_search, method: 'GET', class: " card-panel center") do%>
 	<h4>Embassy Search</h4>
 	<div class="row">
-
-			<div class="input-field ">
-				<%= text_field_tag(:from, "",class: "validate") %>
-				<%= label_tag(:from) %>
-			</div>
-	    </div>
-	    <div class="">
-			<div class="input-field">
-				<%= label_tag(:to) %>
-				<%= text_field_tag(:to, "", class: "validate") %>
-
-
+		<div class="input-field ">
+			<%= text_field_tag(:from, "",class: "validate") %>
+			<%= label_tag(:from) %>
 		</div>
-
+		<div class="input-field">
+			<%= label_tag(:to) %>
+			<%= text_field_tag(:to, "", class: "validate") %>
+		</div>
 	</div>
 	<div class="row">
 		<div class="col m4 offset-m4 center submit-button">   
@@ -24,4 +18,4 @@
 		<% end %>
 		</div>
 	</div>
-	</div>
+</div>
