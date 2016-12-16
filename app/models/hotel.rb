@@ -55,7 +55,7 @@ class Hotel < ApplicationRecord
     hotel.search('.location-info').search('li').text.chomp
   end
   def self.check_date(date)
-    date >= Date.today.strftime('%d %B,%Y')
+    date >= Date.today.strftime('%d/%B/%Y')
   end
   def self.mechanize
     page = Mechanize.new.get("https://es.hoteles.com")
