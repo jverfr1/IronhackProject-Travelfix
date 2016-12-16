@@ -9,5 +9,9 @@ module EmbassiesHelper
   def format_value(item)
     item.values.join("")
   end
-
+  def get_website(embassy)
+    embassy.each do |item|
+      url = format_value(item) if format_key(item) == "Website"
+    end
+  end
 end

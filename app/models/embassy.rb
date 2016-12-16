@@ -72,6 +72,24 @@ def self.get_countries_list
     end   
     contact_info
   end
+  def self.get_th_emb_img
+    img = Mechanize.new.get("http://www.thaiembassy.org/madrid").link_with(text: "Eng").click
+    .search('.html-code').search('img')[0].attributes['src'].value
+  end
+  def self.get_visa_info
+    visa_url = Mechanize.new.get("http://www.thaiembassy.org/madrid").link_with(text: "Eng").click
+    .link_with(text: 'Visa').click.link_with(text: 'Información General').uri
+    visa_uri = "#{visa_url.host}#{visa_url.path}" 
+  end
+  def self.read_pdf
+    io     = open('http://www.thaiembassy.org/madrid/contents/images/text_editor/files/Informacion%20General.pdf')
+    reader = PDF::Reader.new(io)
+    visa = []
+    reader.pages.each do |page|
+      visa << page.text
+    end
+    visa
+  end
 end
 
 # s.search('ul.embassy-data').search('li').each     

@@ -14,6 +14,8 @@ class EmbassiesController < ApplicationController
   def show
     @embassy=Embassy.where('name=? and location_abroad=?', params[:to], params[:from])
     @embassy_info = Embassy.get_contact_info(@embassy[0].link)
+    @src = Embassy.get_th_emb_img
+    @visa_info = Embassy.read_pdf
   end
 end
 
