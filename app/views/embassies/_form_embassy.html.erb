@@ -1,8 +1,9 @@
 
-    <div class="col s5">
-	<%=form_tag(:embassy_search, method: 'GET', class: " card-panel ") do%>
+    <div class="col s4 offset-s4">
+	<%=form_tag(:embassy_search, method: 'GET', class: " card-panel center") do%>
+	<h4>Embassy Search</h4>
 	<div class="row">
-		<div class="">
+
 			<div class="input-field ">
 				<%= text_field_tag(:from, "",class: "validate") %>
 				<%= label_tag(:from) %>
@@ -13,12 +14,12 @@
 				<%= label_tag(:to) %>
 				<%= text_field_tag(:to, "", class: "validate") %>
 
-			</div>
+
 		</div>
 
 	</div>
 	<div class="row">
-		<div class="col m4 offset-m4 center">   
+		<div class="col m4 offset-m4 center submit-button">   
 		<%= submit_tag(:search, class: 'btn waves-effect waves-light js-loader') %>
 		<% end %>
 		</div>

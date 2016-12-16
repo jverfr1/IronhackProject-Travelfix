@@ -19,8 +19,18 @@
 	display: block;
     position: relative;
     z-index: 50;
-    top: 25vh
+    top: 28vh
 }
 form.card-panel {
 	height: 400px;
+}
+
+#logo {
+	display: block;
+	position: relative;
+	z-index: 50;
+	top: 1vh;
+}
+.submit-button {
+	margin-top: 10vh;
 }
