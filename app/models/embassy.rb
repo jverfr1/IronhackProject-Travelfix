@@ -86,23 +86,9 @@ def self.get_countries_list
     reader = PDF::Reader.new(io)
     visa = []
     reader.pages.each do |page|
-      visa << page.text
+      visa << page.text.strip
     end
     visa
   end
 end
 
-# s.search('ul.embassy-data').search('li').each     
-
-# address:  [0].search('span')[0].text   Datos: search('ul.embassy-data').search('li')[0].children[1].text.strip 
-
-# CITY: [1].children[1].text
-
-
-# services for thai citizens:  .search('.post-content').search('ul')[2].text.strip 
-
-# services for spanish citizens:  .search('.post-content').search('ul')[3].text.strip 
-
-# visa info title: .search('.post-content').search('h3')[1].children.children.text   
-
-#   visa info: search('.post-content').search('h3')[1].next.next  

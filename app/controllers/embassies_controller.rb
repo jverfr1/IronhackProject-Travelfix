@@ -1,6 +1,5 @@
 class EmbassiesController < ApplicationController
   def travel
-
   end
   def search
     @destination = params[:destination]
