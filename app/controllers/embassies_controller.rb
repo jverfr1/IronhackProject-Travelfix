@@ -5,7 +5,9 @@ class EmbassiesController < ApplicationController
     @destination = params[:destination]
     @date1 = params[:from]
     @date2 = params[:to]
-    @hotels = Hotel.hotel_search(@destination,@date1,@date2).paginate(page: params[:page], per_page: 4)
+    hotel = Hotel.instance
+    hotel.hotel_search(@destination,@date1,@date2)
+    @hotels = hotel.hotels_results.paginate(page: params[:page], per_page: 5)
   end
   def show
     @embassy=Embassy.where('name=? and location_abroad=?', params[:to], params[:from])
